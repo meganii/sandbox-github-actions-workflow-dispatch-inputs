@@ -18,10 +18,7 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - run: |
-          echo "Title: $TITLE"
-          echo "Body: $BODY"
+      - run: deno run --allow-write script/new_post.ts --tile=$TITLE --body=$BODY
         env:
           TITLE: ${{ inputs.title }}
           BODY: ${{ inputs.body }}
-      - run: deno run --allow-write script/new_post.ts --tile=$TITLE --body=$BODY
