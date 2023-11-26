@@ -11,7 +11,7 @@ on:
         required: false
 
 jobs:
-  log-the-inputs:
+  post:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,14 @@ jobs:
         with:
           deno-version: v1.x
 
-      - run: deno run --allow-write script/new_post.ts --title=$TITLE --body=$BODY
+      - name: Create md file
+        run: >
+          deno run
+          --allow-write
+          --no-check
+          script/new_post.ts
+          --title=$TITLE
+          --body=$BODY
         env:
           TITLE: ${{ inputs.title }}
           BODY: ${{ inputs.body }}
