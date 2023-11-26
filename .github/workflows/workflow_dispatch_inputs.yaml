@@ -23,4 +23,4 @@ jobs:
         env:
           TITLE: ${{ inputs.title }}
           BODY: ${{ inputs.body }}
-      - run: deno run --allow-write script/new_post.ts --tile=$TITLE --body=$BODY
+      - run: deno run --allow-write ./script/new_post.ts --tile=$TITLE --body=$BODY
