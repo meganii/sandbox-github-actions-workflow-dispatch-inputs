@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Log level: $TITLE"
+          echo "Title: $TITLE"
+          touch "$TITLE.md"
         env:
-          LEVEL: ${{ inputs.title }}
+          TITLE: ${{ inputs.title }}
